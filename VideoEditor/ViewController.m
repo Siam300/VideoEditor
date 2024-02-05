@@ -6,14 +6,12 @@
 //
 
 #import "ViewController.h"
-#import <MediaPlayer/MediaPlayer.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVKit/AVKit.h>
 
 @interface ViewController ()
 
 @property (strong, nonatomic) NSURL *videoURL;
-@property (strong, nonatomic) MPMoviePlayerController *videoController;
 
 @end
 
@@ -25,31 +23,19 @@
 }
 
 - (void)playVideo {
-    
     // Dismiss the existing video
     if (self.presentedViewController) {
         [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
     }
     
-    if (@available(iOS 9.0, *)) {
-        AVPlayer *player = [AVPlayer playerWithURL:self.videoURL];
-        AVPlayerViewController *controller = [[AVPlayerViewController alloc] init];
-        
-        controller.player = player;
-        
-        [self presentViewController:controller animated:YES completion:^{
-            [player play];
-        }];
-    } else {
-        self.videoController = [[MPMoviePlayerController alloc] initWithContentURL:self.videoURL];
-        
-        [self presentViewController:self.videoController animated:YES completion:^{
-            [self.videoController play];
-        }];
-    }
+    AVPlayer *player = [AVPlayer playerWithURL:self.videoURL];
+    AVPlayerViewController *controller = [[AVPlayerViewController alloc] init];
     
-    // Register for playback finish notification
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(videoPlayBackDidFinish:) name:MPMoviePlayerPlaybackDidFinishNotification object:nil];
+    controller.player = player;
+    
+    [self presentViewController:controller animated:YES completion:^{
+        [player play];
+    }];
 }
 
 - (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls {
@@ -79,6 +65,6 @@
     [self presentViewController:controller animated:YES completion:nil];
     
     [player play];
-
+    
 }
 @end
