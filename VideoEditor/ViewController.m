@@ -9,9 +9,12 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVKit/AVKit.h>
 
-@interface ViewController ()
+@interface ViewController () <UITabBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) NSURL *videoURL;
+@property (strong, nonatomic) AVPlayerViewController *playerViewController;
+
+
 
 @end
 
@@ -38,19 +41,29 @@
     }];
 }
 
-- (void)documentPicker:(UIDocumentPickerViewController *)controller didPickDocumentsAtURLs:(NSArray<NSURL *> *)urls {
-    // Handle the picked documents (in this case, a video)
-    NSURL *pickedURL = [urls firstObject];
-    if (pickedURL) {
-        self.videoURL = pickedURL;
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> *)info {
+    // Changed to check mediaType
+    NSString *mediaType = info[UIImagePickerControllerMediaType];
+    
+    // Changed media type comparison
+    if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
+        self.videoURL = info[UIImagePickerControllerMediaURL];
         [self playVideo];
     }
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 - (IBAction)pickVideo:(id)sender {
-    UIDocumentPickerViewController *documentPicker = [[UIDocumentPickerViewController alloc] initWithDocumentTypes:@[(NSString *)kUTTypeMovie] inMode:UIDocumentPickerModeImport];
-    documentPicker.delegate = self;
-    [self presentViewController:documentPicker animated:YES completion:nil];
+    UIImagePickerController *videoPicker = [[UIImagePickerController alloc] init];
+    videoPicker.delegate = self;
+    videoPicker.modalPresentationStyle = UIModalPresentationCurrentContext;
+    
+    // Set mediaTypes to pick videos only
+    videoPicker.mediaTypes = @[(NSString *)kUTTypeMovie];
+    videoPicker.videoQuality = UIImagePickerControllerQualityTypeHigh;
+    
+    [self presentViewController:videoPicker animated:YES completion:nil];
 }
 
 - (IBAction)btnPlay:(id)sender {
