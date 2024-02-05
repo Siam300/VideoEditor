@@ -13,8 +13,7 @@
 
 @property (strong, nonatomic) NSURL *videoURL;
 @property (strong, nonatomic) AVPlayerViewController *playerViewController;
-
-
+@property (strong, nonatomic) UITextField *textField;
 
 @end
 
@@ -23,6 +22,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.textField = [[UITextField alloc] init];
+    self.textField.borderStyle = UITextBorderStyleRoundedRect;
+    self.textField.placeholder = @"Enter Text";
+    self.textField.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.textField];
+    
+    // Center the UITextField using auto layout constraints
+    NSLayoutConstraint *centerXConstraint = [self.textField.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor];
+    NSLayoutConstraint *centerYConstraint = [self.textField.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor];
+    NSLayoutConstraint *widthConstraint = [self.textField.widthAnchor constraintEqualToConstant:200];
+    NSLayoutConstraint *heightConstraint = [self.textField.heightAnchor constraintEqualToConstant:30];
+    
+    [NSLayoutConstraint activateConstraints:@[centerXConstraint, centerYConstraint, widthConstraint, heightConstraint]];
+    
+    // Add pan gesture recognizer for dragging
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [self.textField addGestureRecognizer:panGestureRecognizer];
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)gestureRecognizer {
+    CGPoint translation = [gestureRecognizer translationInView:self.view];
+    self.textField.center = CGPointMake(self.textField.center.x + translation.x, self.textField.center.y + translation.y);
+    [gestureRecognizer setTranslation:CGPointZero inView:self.view];
 }
 
 - (void)playVideo {
@@ -41,6 +64,8 @@
     }];
 }
 
+
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> *)info {
     // Changed to check mediaType
     NSString *mediaType = info[UIImagePickerControllerMediaType];
@@ -48,11 +73,17 @@
     // Changed media type comparison
     if ([mediaType isEqualToString:(NSString *)kUTTypeMovie]) {
         self.videoURL = info[UIImagePickerControllerMediaURL];
+        
+        // Do something with the entered text
+        NSString *enteredText = self.textField.text;
+        NSLog(@"Entered Text: %@", enteredText);
+        
         [self playVideo];
     }
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
+
 
 - (IBAction)pickVideo:(id)sender {
     UIImagePickerController *videoPicker = [[UIImagePickerController alloc] init];
