@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90F9F332B711ABD000F9F6C /* Video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C90F9F322B711ABD000F9F6C /* Video.mp4 */; };
+		C90F9F352B711CC2000F9F6C /* Video2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C90F9F342B711CC2000F9F6C /* Video2.mp4 */; };
 		C916B4F72B70912300A3E23C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C916B4F62B70912300A3E23C /* AppDelegate.m */; };
 		C916B4FA2B70912300A3E23C /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C916B4F92B70912300A3E23C /* SceneDelegate.m */; };
 		C916B4FD2B70912300A3E23C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C916B4FC2B70912300A3E23C /* ViewController.m */; };
@@ -16,7 +18,22 @@
 		C916B5082B70912400A3E23C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C916B5072B70912400A3E23C /* main.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		C90F9F2D2B7115F9000F9F6C /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
+			files = (
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		C90F9F322B711ABD000F9F6C /* Video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Video.mp4; path = ../../../../Downloads/Video.mp4; sourceTree = "<group>"; };
+		C90F9F342B711CC2000F9F6C /* Video2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Video2.mp4; path = ../../../../Downloads/Video2.mp4; sourceTree = "<group>"; };
 		C916B4F22B70912300A3E23C /* VideoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C916B4F52B70912300A3E23C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C916B4F62B70912300A3E23C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -29,7 +46,6 @@
 		C916B5042B70912400A3E23C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C916B5062B70912400A3E23C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C916B5072B70912400A3E23C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C916B50E2B70939300A3E23C /* Demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Demo.mp4; path = ../../../../Downloads/Demo.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +78,6 @@
 		C916B4F42B70912300A3E23C /* VideoEditor */ = {
 			isa = PBXGroup;
 			children = (
-				C916B50E2B70939300A3E23C /* Demo.mp4 */,
 				C916B4F52B70912300A3E23C /* AppDelegate.h */,
 				C916B4F62B70912300A3E23C /* AppDelegate.m */,
 				C916B4F82B70912300A3E23C /* SceneDelegate.h */,
@@ -74,6 +89,8 @@
 				C916B5032B70912400A3E23C /* LaunchScreen.storyboard */,
 				C916B5062B70912400A3E23C /* Info.plist */,
 				C916B5072B70912400A3E23C /* main.m */,
+				C90F9F322B711ABD000F9F6C /* Video.mp4 */,
+				C90F9F342B711CC2000F9F6C /* Video2.mp4 */,
 			);
 			path = VideoEditor;
 			sourceTree = "<group>";
@@ -88,6 +105,7 @@
 				C916B4EE2B70912300A3E23C /* Sources */,
 				C916B4EF2B70912300A3E23C /* Frameworks */,
 				C916B4F02B70912300A3E23C /* Resources */,
+				C90F9F2D2B7115F9000F9F6C /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -137,7 +155,9 @@
 			files = (
 				C916B5052B70912400A3E23C /* LaunchScreen.storyboard in Resources */,
 				C916B5022B70912400A3E23C /* Assets.xcassets in Resources */,
+				C90F9F352B711CC2000F9F6C /* Video2.mp4 in Resources */,
 				C916B5002B70912300A3E23C /* Main.storyboard in Resources */,
+				C90F9F332B711ABD000F9F6C /* Video.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
