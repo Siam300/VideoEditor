@@ -29,6 +29,7 @@
 		C916B5042B70912400A3E23C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C916B5062B70912400A3E23C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C916B5072B70912400A3E23C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C916B50E2B70939300A3E23C /* Demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = Demo.mp4; path = ../../../../Downloads/Demo.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +62,7 @@
 		C916B4F42B70912300A3E23C /* VideoEditor */ = {
 			isa = PBXGroup;
 			children = (
+				C916B50E2B70939300A3E23C /* Demo.mp4 */,
 				C916B4F52B70912300A3E23C /* AppDelegate.h */,
 				C916B4F62B70912300A3E23C /* AppDelegate.m */,
 				C916B4F82B70912300A3E23C /* SceneDelegate.h */,
