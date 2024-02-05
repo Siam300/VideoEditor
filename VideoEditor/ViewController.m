@@ -59,12 +59,34 @@
     
     controller.player = player;
     
+    // Create a custom button
+    UIButton *customButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [customButton setTitle:@"Save" forState:UIControlStateNormal];
+    [customButton setBackgroundColor:[UIColor whiteColor]];
+    [customButton addTarget:self action:@selector(customButtonTapped) forControlEvents:UIControlEventTouchUpInside];
+    customButton.frame = CGRectMake(10, 10, 100, 30);
+
+    // Created save button
+    UIView *customOverlayView = [[UIView alloc] initWithFrame:CGRectMake(10, 100, 100, 30)];
+    customOverlayView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+    [customOverlayView addSubview:customButton];
+    customButton.center = CGPointMake(customOverlayView.bounds.size.width / 2, customOverlayView.bounds.size.height / 2);
+
+    controller.contentOverlayView.subviews.firstObject.hidden = YES; // Hide default controls
+
+    // Add the custom overlay view to the AVPlayerViewController
+    [controller.contentOverlayView addSubview:customOverlayView];
+
+    // Present the AVPlayerViewController
     [self presentViewController:controller animated:YES completion:^{
         [player play];
     }];
 }
 
-
+- (void)customButtonTapped {
+    NSLog(@"Save Button Tapped!");
+    // Add your custom button functionality here
+}
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> *)info {
     // Changed to check mediaType
